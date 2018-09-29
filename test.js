@@ -1,12 +1,13 @@
-const { client } = require('./functions/redisConnection')();
+const { client } = require('./src/redisConnection')();
 let locks;
-client.on('connect', async function () {
+
+
+//Test for locks
+client.on('ready', async  () => {
     locks = require('./locks/locks')(client);
     await func()
     console.log('done')
-})
-// func()
-//     .then(()=>console.log("done!"));
+});
 
 async function func() {
     let locked = await locks.aquireLock("test");

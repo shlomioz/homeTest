@@ -1,6 +1,4 @@
 
-
-
 function locks(connection) {
     return { aquireLock, releaseLock };
 

@@ -1,7 +1,7 @@
 const {app} = require("./app");
-const {client} = require("./functions/redisConnection")();
-const delayedZsetHandler = require('./functions/delayedZsetHandler');
-const queueHandler = require('./functions/queueHandler');
+const {client} = require("./src/redisConnection")();
+const delayedZsetHandler = require('./src/delayedZsetHandler');
+const queueHandler = require('./src/queueHandler');
 const defaultPort = 1234;
 const port = process.env.PORT_ENV || defaultPort;
 

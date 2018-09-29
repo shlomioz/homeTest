@@ -6,13 +6,13 @@ const moment = require('moment');
 async function delayedZsetHandler(){
     let item;
     while(true){
-        let item = await client.zrange('delayed:', 0, 0,'withscores');
-        if (!item || item.length === 0 || item[1] > Number(moment().format('x'))){
+        time = await client.zrange('delayed:', 0, 0,'withscores');
+        if (!item || item.length === 0 || item[1] > Number(moment.utc().format('x'))){
             await sleep(10);
             continue;
         }
         item = item[0];
-        item = JSON.parse(item)
+        item = JSON.parse(item);
         const {id,message} = item;
         let locked = await locks.aquireLock(id);
         if(!locked){
