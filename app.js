@@ -16,7 +16,7 @@ app.post('/echoAtTime', asyncHandler(async (req,res, next) => {
     }
     catch(err){
         console.log('err: ',err);
-        res.status(400).send({"status":"Error","error":err});
+        res.status(400).send({"status":"Error","error":err.message});
     }
 }));
 
